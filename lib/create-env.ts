@@ -23,7 +23,9 @@ function deepFreeze<T extends Record<any, any>> (o: T) {
 	return Object.freeze(o) as U.DeepReadonly<T>
 }
 
-export default function createEnv<T extends Record<any, any>>(cb: (env: any) => T, devDefaults = {} as U.DeepPartial<T>): U.DeepReadonly<T> {
+export default function createEnv<T extends Record<any, any>>(cb: (env: any) => T, devDefaults?: U.DeepPartial<T>): U.DeepReadonly<T> {
+	devDefaults ??= {} as U.DeepPartial<T>
+
 	// @ts-expect-error: import.meta.env is not defined in Node.js
 	const env = import.meta.env || process.env
 
