@@ -43,7 +43,7 @@ These environment variables are missing:
   
 ```
 
-## Indepth
+## In-depth
 Create your env variable
 
 ```typescript
@@ -71,7 +71,7 @@ Format a value if it exists, to ex. a number
 ```typescript
 const envVar = defineEnv(e => ({
     number: e.VITE_NUMBER(parseFloat),
-    upper: e.VITE_SOMESTR(v => v.toUppserCase())
+    upper: e.VITE_SOMESTR(v => v.toUpperCase())
 }))
 ```
 
