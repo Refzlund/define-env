@@ -1,7 +1,7 @@
 import * as U from 'utility-types'
 import c from 'chalk'
 
-export class EnvVariableMissing {
+class EnvVariableMissing {
 	name: string
 	cb: (v: any) => any
 	constructor(name: string, cb?: (v: any) => any) {

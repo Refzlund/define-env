@@ -1,0 +1,4 @@
+.parcel-cache
+.env.test
+pnpm-lock.yaml
+node_modules
