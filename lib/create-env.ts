@@ -10,7 +10,20 @@ class EnvVariableMissing {
 	}
 }
 
-export default function createEnv<T extends Record<any, any>>(cb: (env: any) => T, devDefaults = {} as U.DeepPartial<T>): Readonly<T> {
+function deepFreeze<T extends Record<any, any>> (o: T) {
+	const propNames = Reflect.ownKeys(o)
+
+	for (const name of propNames) {
+		const value = o[name as string]
+
+		if ((value && typeof value === "object") || typeof value === "function")
+			deepFreeze(value)
+	}
+
+	return Object.freeze(o) as U.DeepReadonly<T>
+}
+
+export default function createEnv<T extends Record<any, any>>(cb: (env: any) => T, devDefaults = {} as U.DeepPartial<T>): U.DeepReadonly<T> {
 	// @ts-expect-error: import.meta.env is not defined in Node.js
 	const env = import.meta.env || process.env
 
@@ -83,5 +96,6 @@ export default function createEnv<T extends Record<any, any>>(cb: (env: any) => 
 		const str = JSON.stringify(errors, null, 4).replaceAll(/[",]/g, '').slice(1, -1).replaceAll(/<([^>]*)>/g, c.cyan('$1'))
 		throw new Error(`${c.red('These environment variables are missing:')}\n${c.yellow(str)}\n${c.dim('If an environment variable is meant to be undefined,\nset the value as undefined or null for the development\ndefaults in the second parameter of createEnv.')}\n`)
 	}
-	return envVars
+	
+	return deepFreeze(envVars)
 }

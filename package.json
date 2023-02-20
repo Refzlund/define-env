@@ -1,8 +1,9 @@
 {
 	"name": "define-env",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
 		"build": "parcel build ./lib/index.ts",
 		"test": "ts-mocha -n loader=ts-node/esm --type-check ./**/*.test.ts",
@@ -16,6 +17,9 @@
 		"chalk": "^5.2.0"
 	},
 	"devDependencies": {
+		"@parcel/core": "^2.8.3",
+		"@parcel/packager-ts": "^2.8.3",
+		"@parcel/transformer-typescript-types": "^2.8.3",
 		"@types/chai": "^4.3.4",
 		"@types/mocha": "^10.0.1",
 		"@types/node": "^18.13.0",
