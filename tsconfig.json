@@ -1,0 +1,34 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Default",
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"outDir": "dist/",
+		"target": "ESNext",
+		"lib": ["ESNext", "DOM"],
+		"module": "ESNext",
+		"composite": false,
+		"declaration": true,
+		"declarationMap": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"inlineSources": false,
+		"isolatedModules": true,
+		"moduleResolution": "node",
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"preserveWatchOutput": true,
+		"noImplicitAny": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"sourceMap": true,
+		"strictPropertyInitialization": false,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true
+	},
+	"exclude": ["node_modules"],
+	"ts-node": {
+		"esm": true,
+		"experimentalSpecifierResolution": "node"
+	}
+}
